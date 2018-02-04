@@ -1,5 +1,6 @@
 package virtualpetshelter;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,11 +41,67 @@ public class VirtualPetShelter {
 		
 	}
 
-	public void petShelterStatus(String name) {
+	public String petShelterStatus(String name) {
 		// TODO Auto-generated method stub
 		VirtualPet petObject = virtualPets.get(name); 
-		petObject.getPetStatus(); 
+		return petObject.getPetStatus(); 
 	}
+
+	public void petShelterPlay(String name, int amountPlay) {
+		// TODO Auto-generated method stub
+		VirtualPet petObject = virtualPets.get(name);
+		petObject.petPlayBoredom(amountPlay);
+	}
+
+	public int petShelterHunger(String name) {
+		// TODO Auto-generated method stub
+		VirtualPet petObject = virtualPets.get(name);
+		return petObject.getHunger();
+	}
+
+	public int petShelterThirst(String name) {
+		// TODO Auto-generated method stub
+		VirtualPet petObject = virtualPets.get(name);
+		return petObject.getThirst(); 
+		
+	}
+
+	public int petShelterBoredom(String name) {
+		// TODO Auto-generated method stub
+		VirtualPet petObject = virtualPets.get(name);
+		return petObject.getBoredom();
+		
+	}
+
+	public int petShelterWaste(String name) {
+		// TODO Auto-generated method stub
+		VirtualPet petObject = virtualPets.get(name);
+		return petObject.getWaste(); 
+		
+	}
+
+	public String petShelterDescription(String name) {
+		// TODO Auto-generated method stub
+		VirtualPet petObject = virtualPets.get(name);
+		return petObject.getDescription(); 
+	}
+
+	public Collection petShelterCollection() {
+		// TODO Auto-generated method stub
+		return virtualPets.values(); 
+		
+	}
+
+	public void tickCycle() {
+		// TODO Auto-generated method stub
+		for(VirtualPet petObject : virtualPets.values()) {
+			petObject.tickEffect(); 
+			
+		}
+		System.out.println("Cycle Complete");
+	}
+
+	
 	
 	
 	

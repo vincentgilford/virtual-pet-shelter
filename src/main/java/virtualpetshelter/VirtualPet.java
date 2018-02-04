@@ -1,18 +1,28 @@
 package virtualpetshelter;
 
+
 public class VirtualPet {
 
 	private String name;
 	private int hunger;
-	private int boredome;
+	private int boredom;
 	private int waste;
 	private int thirst;
-
-	public VirtualPet(String name, int hunger, int boredome, int waste, int thirst) {
+	private String overallStatus;
+	private String description;
+	
+	
+	public VirtualPet(String name, String description) {
+		this.name = name; 
+		this.description = description; 
+		
+	}
+	
+	public VirtualPet(String name, int hunger, int boredom, int waste, int thirst) {
 		//TODO Auto-generated constructor stub
 		this.name = name;
 		this.hunger = hunger;
-		this.boredome = boredome;
+		this.boredom = boredom;
 		this.waste = waste;
 		this.thirst = thirst;
 	
@@ -39,19 +49,59 @@ public class VirtualPet {
 		thirst -= amountToDrink;
 	}
 
-	public int getWater() {
+
+	public String getPetStatus() {
 		// TODO Auto-generated method stub
-		return thirst;
+		if( (hunger <=50 && hunger > 45) && (thirst <=50 && thirst > 45) && (waste <=50 && waste > 45) && (boredom <=50 && boredom > 45)) {
+			overallStatus = getName() + " is not doing well!";
+		} else if((hunger <=45 && hunger > 40) && (thirst <=45 && thirst > 40) && (waste <=45 && waste > 40) && (boredom <=45 && boredom >= 40)) {
+			overallStatus = getName() + " is ok but needs more care. Please take notice ";
+		} else if ((hunger <=40 && hunger > 35) && (thirst <=40 && thirst > 35) && (waste <=40 && waste > 35) && (boredom <=40 && boredom >= 35)) {
+			overallStatus = getName() + " is doing well. Keep the good work!";
+		} else if ((hunger <= 35) && (thirst <= 35) && ( waste <= 35) && ( boredom <= 35)) {
+			overallStatus = getName() + " is doing amazing!!!";
+		} else {
+			overallStatus = getName() + " please take notice your pet is in grave danger!";
+		}
+		
+		return overallStatus;  //may put the logic of status in another method	
 	}
 
-	public void getPetStatus() {
+	public void petPlayBoredom(int amountPlay) {
 		// TODO Auto-generated method stub
+		boredom -= amountPlay; 
+	}
+
+	public int getBoredom() {
+		// TODO Auto-generated method stub
+		return boredom;
+	}
+
+	public int getThirst() {
+		// TODO Auto-generated method stub
+		return thirst; 
+	}
+
+	public int getWaste() {
+		// TODO Auto-generated method stub
+		return waste;
+	}
+
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return description;
+	}
+
+	public void tickEffect() {
+		// TODO Auto-generated method stub
+		hunger += 2; 
+		thirst += 2;
+		boredom += 2; 
+		waste += 2;
+		
+		
 		
 	}
-	
-	
-
-	
 	
 	
 }

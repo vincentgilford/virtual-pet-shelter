@@ -1,10 +1,13 @@
 package virtualpetshelter;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Collection;
 
 import org.junit.Before;
-import org.junit.Test; 
-import static org.hamcrest.Matchers.is;
+import org.junit.Test;
 
 
 
@@ -26,6 +29,7 @@ public class VirtualPetShelterTest {
 		
 		 puppy = new VirtualPet(petName, hunger, boredome, waste, thirst); 
 	
+		 
 	}
 	
 	@Test
@@ -74,7 +78,7 @@ public class VirtualPetShelterTest {
 		
 		//assert
 		int check = 40;
-		assertThat(check, is(puppy.getWater()));
+		assertThat(check, is(puppy.getThirst()));
 		
 	}
 	
@@ -89,9 +93,137 @@ public class VirtualPetShelterTest {
 		//assert
 		VirtualPet retrieved = underTest.findPet(puppy);
 		retrieved.getPetStatus();
-		assertThat(retrieved.getPetStatus(),is(underTest.petShelterStatus(puppy.getName()));
+		 
+//		assertThat(check , is(underTest.petShelterStatus(puppy.getName()));
+		assertEquals(retrieved.getPetStatus(), underTest.petShelterStatus(puppy.getName()));
+	}
+	
+	@Test
+	public void isAssertStatusOfPetMatchStringMessageUseBooleanAssertTrue() {
+		underTest.addPet(puppy);
+		
+		//act
+		underTest.petShelterStatus(puppy.getName());
+		
+		
+		//assert
+		VirtualPet retrieved = underTest.findPet(puppy);
+		retrieved.getPetStatus();		 
+		String check =retrieved.getPetStatus(); 
+//		assertEquals(retrieved.getPetStatus(), underTest.petShelterStatus(puppy.getName()));
+		assertTrue(check.equalsIgnoreCase(underTest.petShelterStatus(puppy.getName())));
+	
+	} //which way is better?
+	
+	@Test
+	public void assertThatPetPlayReducesBoredom() {
+		//assert
+		underTest.addPet(puppy);
+		//act
+		underTest.petShelterPlay(puppy.getName(),10); 
+		
+		//assert
+		VirtualPet retrieved = underTest.findPet(puppy); 
+		retrieved.getBoredom(); 
+		int check = 20;
+		assertEquals(check,retrieved.getBoredom()); 
 		
 	}
+	
+	@Test
+	public void getIndividualHungerStatusFromShelter() {
+		//assert
+		underTest.addPet(puppy);
+		//act
+		underTest.petShelterHunger(puppy.getName()); 
+		underTest.petShelterThirst(puppy.getName());
+		underTest.petShelterBoredom(puppy.getName()); 
+		underTest.petShelterThirst(puppy.getName()); 
+		underTest.petShelterWaste(puppy.getName()); 
+		
+		//act
+		VirtualPet retrieved = underTest.findPet(puppy);
+		retrieved.getBoredom();
+		retrieved.getHunger();
+		retrieved.getThirst();
+		retrieved.getWaste(); 
+	
+		
+		//assert
+		assertEquals(retrieved.getBoredom(),underTest.petShelterBoredom(puppy.getName()));
+		assertEquals(retrieved.getHunger(),underTest.petShelterHunger(puppy.getName()));
+		assertEquals(retrieved.getThirst(),underTest.petShelterThirst(puppy.getName()));
+		assertEquals(retrieved.getWaste(),underTest.petShelterWaste(puppy.getName()));
+	}
+	
+	
+	@Test
+	public void assertdescriptionPetStatus() {
+		//assert
+		underTest.addPet(puppy);
+		
+		//act
+		underTest.petShelterDescription(puppy.getName()); 
+		
+		
+		//assert
+		VirtualPet retrieved = underTest.findPet(puppy);
+		retrieved.getDescription();
+		
+		assertEquals(retrieved.getDescription(), underTest.petShelterDescription(puppy.getName()));
+	}
+	
+	@Test
+	public void assertAcollectionIsReturned() {
+		underTest.addPet(puppy);
+		
+		//act
+		underTest.petShelterCollection(); 
+		
+		//assert
+		Collection<VirtualPet> retrieved = underTest.petShelterCollection(); 
+		assertEquals(retrieved,underTest.petShelterCollection());
+		
+	}
+	
+	@Test
+	public void assertFucntionOfTickMethod() {
+		underTest.addPet(puppy);
+		
+		//act
+		underTest.tickCycle();
+		VirtualPet retrieved = underTest.findPet(puppy);
+		retrieved.getHunger();
+		int check = 52; 
+		
+		
+		//assert
+		assertEquals(check, retrieved.getHunger());
+	}
+	
+	@Test
+	public void assertFunctionOFTickMethodTwoObjects() {
+		underTest.addPet(puppy);
+		VirtualPet retrieved  = new VirtualPet("Scooby-Doo", 48, boredome, waste, thirst);
+		underTest.addPet(retrieved);
+		
+		//act
+		underTest.tickCycle();
+		VirtualPet petTest = underTest.findPet(puppy);
+		VirtualPet petRetrieved = underTest.findPet(retrieved);
+		
+		
+		//assert
+		int check = 52;
+		int checkRetrieved = 50;
+		
+		assertEquals(check, petTest.getHunger());
+		assertEquals(checkRetrieved, petRetrieved.getHunger());
+		
+	}
+	
+	
+	
 	
 	
 	
