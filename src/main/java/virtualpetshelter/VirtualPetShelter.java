@@ -20,7 +20,7 @@ public class VirtualPetShelter {
 
 	public void adoptPet(VirtualPet pet) {
 		// TODO Auto-generated method stub
-		virtualPets.remove((pet).getName()); 
+		virtualPets.remove(pet.getName()); 
 	}
 
 	public int shelterSize() {
@@ -99,6 +99,12 @@ public class VirtualPetShelter {
 			
 		}
 		System.out.println("Cycle Complete");
+	}
+
+	public void cleanPetShelter(String name, int wasteAmount) {
+		// TODO Auto-generated method stub
+		VirtualPet petObject = virtualPets.get(name);
+		petObject.wasteRemoval(wasteAmount); 
 	}
 
 	

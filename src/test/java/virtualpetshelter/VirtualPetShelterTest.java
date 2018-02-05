@@ -54,7 +54,7 @@ public class VirtualPetShelterTest {
 		//assert
 		int retrieved = 0; 
 		assertEquals(retrieved,underTest.shelterSize());
-		//**better way to check numbers using hamcrest?**
+		//**better way to check numbers using ham?**
 	}
 	
 	@Test
@@ -222,8 +222,31 @@ public class VirtualPetShelterTest {
 		
 	}
 	
+	@Test
+	public void assertRandomStatFucntion() {
+		VirtualPet retrieved = new VirtualPet("Scooby","Always hungry");
+		VirtualPet petObjectCheck = new VirtualPet("Toto", "Portal Access");
+		
+		
+		System.out.println(retrieved.getHunger());
+		System.out.println(petObjectCheck.getHunger());
+		
+		
+	}
 	
-	
+	@Test
+	public void assertThatWasteRemovedFromPet() {
+		underTest.addPet(puppy);
+		
+		//act
+		underTest.cleanPetShelter(puppy.getName(),5); 
+		VirtualPet retrieved = underTest.findPet(puppy);
+		int check = 25;
+		//assert
+		assertEquals(check,retrieved.getWaste());
+		
+		
+	}
 	
 	
 	
