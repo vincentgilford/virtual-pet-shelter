@@ -59,6 +59,7 @@ public class VirtualPetShelterApp {
 			String userRemove = input.nextLine();
 			weCanCodePets.virtualPets.remove(userRemove);
 			System.out.println("Enjoy your pet!!!");
+		
 		}
 		
 		if(userChoice.equals("2")) {
@@ -105,7 +106,7 @@ public class VirtualPetShelterApp {
 		if(userChoice.equals("7")) {
 			System.out.println("Which pet would you like to know about?");
 			String userStatus = input.nextLine().trim();
-			weCanCodePets.petShelterStatus(userStatus);	
+			System.out.println(weCanCodePets.petShelterStatus(userStatus));	
 		}
 		
 		if (userChoice.equals("8")) {
@@ -120,14 +121,13 @@ public class VirtualPetShelterApp {
 				System.out.println("Pet Name: " + pet.getName() +  "\tHunger: " + pet.getHunger() + "\tThirst: " + pet.getThirst() + "\tWaste: " + pet.getWaste()
 						+ "\tBoredome: " + pet.getBoredom()); 
 			}
-			
-			
 		}
-		
 		
 		weCanCodePets.tickCycle();
 		} while(!userChoice.equals("10"));
 		System.exit(0);
+	
+	
 	}
 
 }
