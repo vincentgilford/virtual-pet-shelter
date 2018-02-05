@@ -6,11 +6,11 @@ import java.util.Map;
 
 public class VirtualPetShelter {
 
-	Map<String,VirtualPet> virtualPets = new HashMap<String,VirtualPet>(); 
-		
+	Map<String, VirtualPet> virtualPets = new HashMap<String, VirtualPet>();
+
 	public void addPet(VirtualPet pet) {
-		virtualPets.put(pet.getName(),pet);
-		
+		virtualPets.put(pet.getName(), pet);
+
 	}
 
 	public VirtualPet findPet(VirtualPet pet) {
@@ -20,7 +20,7 @@ public class VirtualPetShelter {
 
 	public void adoptPet(VirtualPet pet) {
 		// TODO Auto-generated method stub
-		virtualPets.remove(pet.getName()); 
+		virtualPets.remove(pet.getName());
 	}
 
 	public int shelterSize() {
@@ -37,14 +37,14 @@ public class VirtualPetShelter {
 	public void waterPetShelter(String name, int amountToDrink) {
 		// TODO Auto-generated method stub
 		VirtualPet petObject = virtualPets.get(name);
-		petObject.waterPet(amountToDrink); 
-		
+		petObject.waterPet(amountToDrink);
+
 	}
 
 	public String petShelterStatus(String name) {
 		// TODO Auto-generated method stub
-		VirtualPet petObject = virtualPets.get(name); 
-		return petObject.getPetStatus(); 
+		VirtualPet petObject = virtualPets.get(name);
+		return petObject.getPetStatus();
 	}
 
 	public void petShelterPlay(String name, int amountPlay) {
@@ -62,41 +62,41 @@ public class VirtualPetShelter {
 	public int petShelterThirst(String name) {
 		// TODO Auto-generated method stub
 		VirtualPet petObject = virtualPets.get(name);
-		return petObject.getThirst(); 
-		
+		return petObject.getThirst();
+
 	}
 
 	public int petShelterBoredom(String name) {
 		// TODO Auto-generated method stub
 		VirtualPet petObject = virtualPets.get(name);
 		return petObject.getBoredom();
-		
+
 	}
 
 	public int petShelterWaste(String name) {
 		// TODO Auto-generated method stub
 		VirtualPet petObject = virtualPets.get(name);
-		return petObject.getWaste(); 
-		
+		return petObject.getWaste();
+
 	}
 
 	public String petShelterDescription(String name) {
 		// TODO Auto-generated method stub
 		VirtualPet petObject = virtualPets.get(name);
-		return petObject.getDescription(); 
+		return petObject.getDescription();
 	}
 
 	public Collection petShelterCollection() {
 		// TODO Auto-generated method stub
-		return virtualPets.values(); 
-		
+		return virtualPets.values();
+
 	}
 
 	public void tickCycle() {
 		// TODO Auto-generated method stub
-		for(VirtualPet petObject : virtualPets.values()) {
-			petObject.tickEffect(); 
-			
+		for (VirtualPet petObject : virtualPets.values()) {
+			petObject.tickEffect();
+
 		}
 		System.out.println("Cycle Complete");
 	}
@@ -104,11 +104,7 @@ public class VirtualPetShelter {
 	public void cleanPetShelter(String name, int wasteAmount) {
 		// TODO Auto-generated method stub
 		VirtualPet petObject = virtualPets.get(name);
-		petObject.wasteRemoval(wasteAmount); 
+		petObject.wasteRemoval(wasteAmount);
 	}
 
-	
-	
-	
-	
 }
